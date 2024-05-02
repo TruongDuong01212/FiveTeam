@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<!-- Phần  Blogs  -->
+<section class="blogs" id="blogs">
+    <h1 class="heading" style="color: #000080">Bài Viết <span>Của Chúng Tôi</span></h1>
+    <div class="box-container">
+
+        @foreach (var blog in Model)
+        {
+            <div class="box">
+                    <img src="@Url.Content(blog.Picture)" alt="@blog.Title">
+                    <div class="content">
+                        <div class="icons">
+                            <a href="#"><i class="fas fa-user"></i>@blog.ByUser</a>
+                            <a href="#"><i class="fas fa-calendar"></i>@blog.Date</a>
+                        </div>
+                        <h3>@blog.Title</h3>
+                        <p>...(được tóm tắt nội dung bài viết, giới hạn số ký tự hoặc từ).</p>
+                        <a href="@Url.Action("DetailBlogs", "Blogs", new { id = blog.ID })" class="btn">Xem Bài</a>
+                    </div>
+            </div>
+        }
+
+    </div>
+</section>

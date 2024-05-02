@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<!-- phần categories    -->
+<section class="categories" id="categories">
+    <h1 class="heading" style="color: #000080"> Sản Phẩm <span>giảm giá</span></h1>
+    <div class="box-container">
+
+        @foreach (var category in Model)
+        {
+            <div class="box">
+                <a href="@Url.Action("DetailCategories", "Categories", new { id = category.ID })">
+                    <img src="@Url.Content(category.Picture)" alt="@category.CategoriesName">
+                    <h3>@category.CategoriesName</h3>
+                    <p>Giảm @category.SellOff% </p>
+                    <a href="#" class="btn">Mua Ngay</a>
+            </div>
+        }
+    </div>
+</section>
+
+
+

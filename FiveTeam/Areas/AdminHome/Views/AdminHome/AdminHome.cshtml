@@ -1,0 +1,782 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin </title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- linkl lấy phông chữ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Areas/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/Areas/css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="~/Areas/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/Areas/css/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="~/Areas/css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/Areas/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        #wrapper {
+            color: #FFFFFF;
+        }
+
+        .navbar-top-links li a {
+            color: #FF9900;
+        }
+
+        .dropdown-menu li a {
+            color: #FF9900; /* Màu đen */
+        }
+
+        a {
+            color: #000080;
+            font-weight: bolder;
+            font-size: 1.5rem;
+            /* Màu trắng */
+        }
+
+        .custom-search-form .form-control {
+            background-color: #FFFFFF; /* Màu xanh */
+            border-color: #007BFF; /* Màu xanh */
+            color: #ffff; /* Màu trắng cho chữ */
+        }
+
+        .custom-search-form .btn-primary {
+            background-color: #FF9900; /* Màu xanh */
+            border-color: #FF9900; /* Màu xanh */
+        }
+
+            .custom-search-form .btn-primary:hover {
+                background-color: #0056b3; /* Màu xanh nhạt khi hover */
+                border-color: #0056b3; /* Màu xanh nhạt khi hover */
+            }
+
+        .fa-fw {
+            color: #FF9900;
+        }
+
+        .navbar-inverse .navbar-brand.custom {
+            color: #FF9900;
+            font-size: 4rem;
+        }
+        .heading {
+            font-weight: bolder;
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--black);
+            padding: 5rem 0 2rem;
+        }
+
+            /* Tạo hiệu ứng nổi bật cho phần chữ trong thẻ <span> của .heading */
+            .heading span {
+                background: #FF8C00;
+                color: #fff;
+                display: inline-block;
+                padding: .5rem 3rem;
+                clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+            }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand custom" href="@Url.Action("ListProduct", "AdminProduct")">Quản Lí</a>
+            </div>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <ul class="nav navbar-nav navbar-left navbar-top-links">
+                <li><a href="@Url.Action("ListProduct", "AdminProduct")" style="color: #FF9900; border-color: #000080;"><i class="fa fa-home fa-fw"></i>Gia Vị Việt</a></li>
+            </ul>
+
+            <ul class="nav navbar-right navbar-top-links">
+                <li class="dropdown navbar-inverse">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> Bình Luận Mới
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 Người Theo Dõi Mới
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> Tin Nhắn Đã Gữi
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-tasks fa-fw"></i> Nhiệm Vụ Mới
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="text-center" href="#">
+                                <strong>Xem Tất Cả Thông Báo</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> Thêm <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Thông tin người dùng</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-gear fa-fw"></i> Cài Đặt</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="@Url.Action("Login","AdminHome")"><i class="fa fa-sign-out fa-fw"></i> Đăng Xuất</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /.navbar-top-links -->
+        </nav>
+
+        <aside class="sidebar navbar-default" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="@Url.Action("AdminHome", "AdminHome")" ><i class="fa fa-edit fa-fw"></i> Trang chủ</a>
+                       
+
+                    <li>
+                        <a href="@Url.Action("ListProduct", "AdminProduct")"><i class="fa fa-edit fa-fw"></i> Quản Lí Sản Phẩm</a>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ListCategories", "AdminCategories")"><i class="fa fa-edit fa-fw"></i> Quản Lí giảm giá</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ListBlogs", "AdminBlogs")"><i class="fa fa-edit fa-fw"></i> Quản Lí Bài Viết</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ListReview", "AdminReview")"><i class="fa fa-edit fa-fw"></i> Quản Lí Đánh Giá</a>
+                    </li>
+
+                    <li>
+                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Quản lí Đơn Hàng</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Quản lí Khách Hàng</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Quản lí Tài Khoản và Phân Quyền</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Quản lí Thể Loại và Danh Mục</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Quản lý báo cáo</a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Login","AdminHome")"><i class="fa fa-user fa-fw"></i> Trang Đăng Nhập</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Login","AdminHome")"><i class="fa fa-user fa-fw"></i> Trang Đăng xuất</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </aside>
+        <!-- /.sidebar -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="heading" style="color: #000080"> Bảng <span>Điều Khiển</span> </h1>
+                        
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-comments fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">26</div>
+                                        <div>Bình luận mới!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Xem chi tiết</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-tasks fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">12</div>
+                                        <div>Nhiệm vụ mới!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Xem chi tiết</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-shopping-cart fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">124</div>
+                                        <div>Đơn hàng mới!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Xem chi tiết</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">13</div>
+                                        <div>Vé hỗ trợ!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Xem chi tiết</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Ví dụ Biểu đồ Diện tích
+                                <div class="pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                            Hành động
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                            <li><a href="#">Hành động</a></li>
+                                            <li><a href="#">Hành động khác</a></li>
+                                            <li><a href="#">Cái khác ở đây</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Liên kết tách</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="morris-area-chart"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Ví dụ Biểu đồ Cột
+                                <div class="pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                            Hành động
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                            <li><a href="#">Hành động</a></li>
+                                            <li><a href="#">Hành động khác</a></li>
+                                            <li><a href="#">Cái khác ở đây</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Liên kết tách</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div id="morris-area-chart"></div>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+
+
+                        <!-- /.panel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Ví dụ Biểu đồ Cột
+                                <div class="pull-right">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                            Hành động
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu">
+                                            <li><a href="#">Hành động</a></li>
+                                            <li><a href="#">Hành động khác</a></li>
+                                            <li><a href="#">Cái khác ở đây</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Liên kết tách</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Ngày</th>
+                                                        <th>Giờ</th>
+                                                        <th>Số tiền</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>3326</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>3:29 CH</td>
+                                                        <td>$321.33</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3325</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>3:20 CH</td>
+                                                        <td>$234.34</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3324</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>3:03 CH</td>
+                                                        <td>$724.17</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3323</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>3:00 CH</td>
+                                                        <td>$23.71</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3322</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>2:49 CH</td>
+                                                        <td>$8345.23</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3321</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>2:23 CH</td>
+                                                        <td>$245.12</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3320</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>2:15 CH</td>
+                                                        <td>$5663.54</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3319</td>
+                                                        <td>21/10/2013</td>
+                                                        <td>2:13 CH</td>
+                                                        <td>$943.45</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.table-responsive -->
+                                    </div>
+                                    <!-- /.col-lg-4 (nested) -->
+                                    <div class="col-lg-8">
+                                        <div id="morris-bar-chart"></div>
+                                    </div>
+                                    <!-- /.col-lg-8 (nested) -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+
+                    </div>
+
+                    <!-- /.col-lg-8 -->
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bell fa-fw"></i> Bảng Thông Báo
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-comment fa-fw"></i> Bình luận mới
+                                        <span class="pull-right text-muted small">
+                                            <em>4 phút trước</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-twitter fa-fw"></i> 3 Người theo dõi mới
+                                        <span class="pull-right text-muted small">
+                                            <em>12 phút trước</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-envelope fa-fw"></i> Tin nhắn đã gửi
+                                        <span class="pull-right text-muted small">
+                                            <em>27 phút trước</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-tasks fa-fw"></i> Công việc mới
+                                        <span class="pull-right text-muted small">
+                                            <em>43 phút trước</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-upload fa-fw"></i> Máy chủ khởi động lại
+                                        <span class="pull-right text-muted small">
+                                            <em>11:32 SA</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-bolt fa-fw"></i> Máy chủ đã gặp sự cố!
+                                        <span class="pull-right text-muted small">
+                                            <em>11:13 SA</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-warning fa-fw"></i> Máy chủ không phản hồi
+                                        <span class="pull-right text-muted small">
+                                            <em>10:57 SA</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-shopping-cart fa-fw"></i> Đơn hàng mới được đặt
+                                        <span class="pull-right text-muted small">
+                                            <em>9:49 SA</em>
+                                        </span>
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <i class="fa fa-money fa-fw"></i> Thanh toán đã nhận
+                                        <span class="pull-right text-muted small">
+                                            <em>Hôm qua</em>
+                                        </span>
+                                    </a>
+                                </div>
+                                <!-- /.list-group -->
+                                <a href="#" class="btn btn-default btn-block">Xem tất cả Thông báo</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i> Ví dụ Biểu đồ Donut
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-donut-chart"></div>
+                                <a href="#" class="btn btn-default btn-block">Xem chi tiết</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                        <div class="chat-panel panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-comments fa-fw"></i>
+                                Chat
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu slidedown">
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-refresh fa-fw"></i> Làm mới
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-check-circle fa-fw"></i> Sẵn sàng
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-times fa-fw"></i> Bận
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-clock-o fa-fw"></i> Vắng mặt
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-sign-out fa-fw"></i> Đăng xuất
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <ul class="chat">
+                                    <li class="left clearfix">
+                                        <span class="chat-img pull-left">
+                                            <img src="http://via.placeholder.com/50/55C1E7/fff" alt="Ảnh đại diện của người dùng"
+                                                 class="img-circle" />
+                                        </span>
+
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <strong class="primary-font">Jack Sparrow</strong>
+                                                <small class="pull-right text-muted">
+                                                    <i class="fa fa-clock-o fa-fw"></i> 12 phút trước
+                                                </small>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                                ornare dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="right clearfix">
+                                        <span class="chat-img pull-right">
+                                            <img src="http://via.placeholder.com/50/FA6F57/fff" alt="Ảnh đại diện của người dùng"
+                                                 class="img-circle" />
+                                        </span>
+
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <small class=" text-muted">
+                                                    <i class="fa fa-clock-o fa-fw"></i> 13 phút trước
+                                                </small>
+                                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                                ornare dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="left clearfix">
+                                        <span class="chat-img pull-left">
+                                            <img src="http://via.placeholder.com/50/55C1E7/fff" alt="Ảnh đại diện của người dùng"
+                                                 class="img-circle" />
+                                        </span>
+
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <strong class="primary-font">Jack Sparrow</strong>
+                                                <small class="pull-right text-muted">
+                                                    <i class="fa fa-clock-o fa-fw"></i> 14 phút trước
+                                                </small>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                                ornare dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="right clearfix">
+                                        <span class="chat-img pull-right">
+                                            <img src="http://via.placeholder.com/50/FA6F57/fff" alt="Ảnh đại diện của người dùng"
+                                                 class="img-circle" />
+                                        </span>
+
+                                        <div class="chat-body clearfix">
+                                            <div class="header">
+                                                <small class=" text-muted">
+                                                    <i class="fa fa-clock-o fa-fw"></i> 15 phút trước
+                                                </small>
+                                                <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                            </div>
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum
+                                                ornare dolor, quis ullamcorper ligula sodales.
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.panel-body -->
+                            <div class="panel-footer">
+                                <div class="input-group">
+                                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Nhập tin nhắn của bạn ở đây..." />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-warning btn-sm" id="btn-chat">
+                                            Gửi
+                                        </button>
+                                    </span>
+                                
+
+                                </div>
+                            </div>
+                            <!-- /.panel-footer -->
+                        </div>
+                        <!-- /.panel .chat-panel -->
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+   
+    <!-- jQuery -->
+    <script src="~/Areas/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Areas/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Areas/js/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Areas/js/raphael.min.js"></script>
+    <script src="~/Areas/js/morris.min.js"></script>
+    <script src="~/Areas/js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Areas/js/startmin.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="~/js/script.js"></script>
+
+</body>
+
+</html>

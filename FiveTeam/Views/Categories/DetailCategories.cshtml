@@ -1,0 +1,159 @@
+﻿@model FiveTeam.Models.CategoriesFiveTeam
+
+@{
+    ViewBag.Title = "DetailCategories";
+    Layout = "~/Views/Shared/_LayoutDeltail.cshtml";
+}
+
+<style>
+    /* Styles cho tiêu đề */
+    .heading {
+        text-align: center; /* Căn giữa nội dung */
+        padding: 2rem 0; /* Padding cho phía trên và dưới */
+        padding-bottom: 3rem; /* Padding cho phía dưới */
+        font-size: 3.5rem; /* Kích thước font */
+        color: var(--black); /* Màu chữ */
+        margin-top: 10rem; /* Khoảng cách từ trên xuống */
+    }
+
+    /* Styles chung cho nút */
+    .btn-default {
+        padding: 0.5rem 1rem; /* Padding */
+        font-size: 1.5rem; /* Kích thước font */
+        border-radius: 0.5rem; /* Bo tròn viền */
+        font-weight: bolder; /* Tăng độ đậm của font */
+        color: #000080; /* Màu chữ */
+        cursor: pointer; /* Con trỏ chuột thành pointer */
+    }
+
+        /* Hover state cho nút */
+        .btn-default:hover {
+            background-color: var(--orange); /* Màu nền khi di chuột qua */
+        }
+
+    /* Styles cho chi tiết sản phẩm */
+    .product-detail {
+        margin-top: 30px; /* Khoảng cách từ trên xuống */
+    }
+
+    /* Styles cho nội dung chi tiết */
+    .detail_sp {
+        display: flex; /* Hiển thị theo kiểu flexbox */
+        justify-content: space-between; /* Canh giữa các thành phần */
+        margin-top: 20px; /* Khoảng cách từ trên xuống */
+        width: 70%; /* Độ rộng */
+        margin: 0 auto; /* Canh giữa */
+    }
+
+    /* Styles cho hình ảnh trong chi tiết */
+    .detail_img img {
+        width: 100%; /* Độ rộng */
+        height: auto; /* Chiều cao tự động */
+        border: 1px solid #e0e0e0; /* Viền */
+        border-radius: 5px; /* Bo tròn viền */
+        max-width: 100%; /* Độ rộng tối đa */
+    }
+
+    /* Styles cho nội dung bên phải của chi tiết */
+    .detail_nd {
+        flex: 1; /* Chia đều không gian */
+        margin-left: 20px; /* Khoảng cách bên trái */
+    }
+
+        /* Styles cho tiêu đề trong nội dung chi tiết */
+        .detail_nd h3 {
+            font-size: 24px; /* Kích thước font */
+            margin-bottom: 15px; /* Khoảng cách từ dưới lên */
+            color: #000080; /* Màu chữ */
+            font-weight: bolder; /* Tăng độ đậm của font */
+        }
+
+    /* Styles cho input */
+    input {
+        font-size: 1.7rem; /* Kích thước font */
+    }
+
+    /* Đường kẻ ngang */
+    hr {
+        border: none; /* Loại bỏ viền */
+        height: 1px; /* Chiều cao */
+        background-color: #e0e0e0; /* Màu nền */
+        margin: 20px 0; /* Khoảng cách trên và dưới đường kẻ */
+        width: 70%; /* Độ rộng */
+        margin: 0 auto; /* Canh giữa */
+    }
+
+    /* Styles cho tiêu đề h2 */
+    h2 {
+        width: 83%; /* Độ rộng */
+        margin: 0 auto; /* Canh giữa */
+        color: #000080; /* Màu chữ */
+        font-size: 2rem; /* Kích thước font */
+        font-weight: bolder; /* Tăng độ đậm của font */
+    }
+
+    /* Styles cho đoạn văn trong bài viết */
+    .bai_viet p {
+        width: 83%; /* Độ rộng */
+        margin: 0 auto; /* Canh giữa */
+        color: #000000; /* Màu chữ */
+        font-size: 1.7rem; /* Kích thước font */
+        text-indent: 30px; /* Thụt vào đầu dòng */
+    }
+
+</style>
+<article>
+    <h1 class="heading" style="color: #000080">Chi Tiết <span>Giảm Giá</span> </h1>
+    <!-- làm thông tin giỏ hàng -->
+    <section class="detail_sp">
+        <div class="detail_img">
+            <img src="@Url.Content(Model.Picture)" alt="img">
+        </div>
+        <!--img-->
+        <div class="detail_nd">
+            <h3 style="color: #000080;font-size: 3rem; font-weight: bolder;"> @Model.CategoriesName</h3>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Mã sản phẩm:</span> <span style="color: black; font-size: 1.7rem;">@Model.CategoriesCode</span> </p>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Gỉảm:</span> <span style="color: black; font-size: 1.7rem;">@Model.SellOff%</span> </p>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Giá:</span> <span style="color: black; font-size: 1.7rem;">10000 VNĐ</span> </p>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Tính Trạng:</span> <span style="color: black;font-size: 1.7rem;">Còn Hàng</span> </p>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Thương hiệu:</span> <span style="color: black;font-size: 1.7rem;">Gia Vị Việt</span> </p>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Trọng Lượng:</span> <span style="color: black;font-size: 1.7rem;">50gam</span> </p>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Xuất xứ:</span> <span style="color: black;font-size: 1.7rem;">Việt Nam</span> </p>
+            <p>
+                <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Đánh Giá:</span>  <span class="stars" style="color: #FF8C00; font-size: 1.7rem; font-weight: bolder;">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span>
+            </p>
+            <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Số lượng: <input type="text" placeholder="Nhập số lượng..."></span>  </p>
+            <button class="btn btn-default">THÊM GIỎ HÀNG</button>
+            <button class="btn btn-default">Mua Ngay</button>
+        </div><!-- nội dung-->
+    </section>
+    <br>
+    <hr>
+    <!--thông tin sản phẩm, chi tiết về sản phẩm -->
+    <section class="">
+        <a class="btn btn-default" href="@Url.Action("Categories","Categories")">Quay Lại</a>
+        <a class="btn btn-default" href="@Url.Action("Reviews","Reviews")">Đánh Giá</a>
+    </section>
+
+    <div class="bai_viet">
+        <h2 style="color: #000080;font-size: 1.7rem;font-weight: bolder;"> Gia Vị Việt: Kho Báu Hương Vị Truyền Thống Việt</h2>
+        <p>
+            Với hơn hai thập kỷ trong ngành, Gia Vị Việt đã trở thành biểu tượng cho chất lượng và độ tin cậy trong việc cung cấp gia vị cho ẩm thực Việt Nam. Từ những ngày đầu tiên, sứ mệnh của chúng tôi luôn là mang đến cho mọi gia đình những trải nghiệm ẩm thực tuyệt vời.
+        </p>
+        <p>
+            Đội ngũ nghiên cứu và phát triển của chúng tôi không ngừng sáng tạo và tìm kiếm, đặc biệt là việc kết hợp giữa truyền thống và sự hiện đại. Với việc sử dụng các nguyên liệu tự nhiên và tiến bộ nhất, chúng tôi cam kết về chất lượng và an toàn cho từng sản phẩm.
+        </p>
+        <p>
+            Chúng tôi không chỉ là một nhà sản xuất, mà còn là một đối tác đồng hành cùng mọi gia đình. Từ hệ thống phân phối đến dịch vụ chăm sóc khách hàng, Gia Vị Việt luôn tự hào là lựa chọn đáng tin cậy cho mọi bữa ăn và niềm vui gia đình. Chúng tôi mong muốn rằng, mỗi món ăn với Gia Vị Việt sẽ tạo nên những kỷ niệm đẹp và ấm áp trong mỗi gia đình.
+        </p>
+
+    </div>
+    <!-- bài viết -->
+
+</article>

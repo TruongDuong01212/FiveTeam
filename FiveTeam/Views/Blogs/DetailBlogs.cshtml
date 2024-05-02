@@ -1,0 +1,125 @@
+﻿@model FiveTeam.Models.BlogsFiveTeam
+
+@{
+    ViewBag.Title = "DetailBlogs";
+    Layout = "~/Views/Shared/_LayoutDeltail.cshtml";
+}
+
+<style>
+    /* Styles cho tiêu đề */
+    .heading {
+        text-align: center; /* Căn giữa nội dung */
+        padding: 2rem 0; /* Padding cho phía trên và dưới */
+        padding-bottom: 3rem; /* Padding cho phía dưới */
+        font-size: 3.5rem; /* Kích thước font */
+        color: var(--black); /* Màu chữ */
+        margin-top: 10rem; /* Khoảng cách từ trên xuống */
+    }
+
+    /* Styles chung cho nút */
+    .btn-default {
+        padding: 0.5rem 1rem; /* Padding */
+        font-size: 1.5rem; /* Kích thước font */
+        border-radius: 0.5rem; /* Bo tròn viền */
+        font-weight: bolder; /* Tăng độ đậm của font */
+        color: #000080; /* Màu chữ */
+        cursor: pointer; /* Con trỏ chuột thành pointer */
+    }
+
+        /* Hover state cho nút */
+        .btn-default:hover {
+            background-color: var(--orange); /* Màu nền khi di chuột qua */
+        }
+
+    /* Đường kẻ ngang */
+    hr {
+        border: none; /* Loại bỏ viền */
+        height: 1px; /* Chiều cao */
+        background-color: #e0e0e0; /* Màu nền */
+        margin: 20px 0; /* Khoảng cách trên và dưới đường kẻ */
+        width: 70%; /* Độ rộng */
+        margin: 0 auto; /* Canh giữa */
+    }
+
+    /* Styles cho tiêu đề h2 */
+    h2 {
+        width: 83%; /* Độ rộng */
+        margin: 0 auto; /* Canh giữa */
+        color: #000080; /* Màu chữ */
+        font-size: 2rem; /* Kích thước font */
+        font-weight: bolder; /* Tăng độ đậm của font */
+    }
+
+    /* Styles cho phần nội dung custom */
+    .custom {
+        width: 70%; /* Độ rộng */
+        margin: 0 auto; /* Canh giữa */
+    }
+
+    /* Styles cho phần nội dung chi tiết */
+    .detail_sp {
+        margin: 0 auto; /* Canh giữa */
+        margin-bottom: 10rem; /* Khoảng cách dưới */
+        font-size: 2rem; /* Kích thước font */
+        margin-bottom: 15px; /* Khoảng cách dưới */
+        color: #000000; /* Màu chữ */
+        text-indent: 40px; /* Thụt vào đầu dòng */
+    }
+
+    /* Styles cho hình ảnh trong phần chi tiết */
+    .detail_img img {
+        height: auto; /* Chiều cao tự động */
+        border: 1px solid #e0e0e0; /* Viền ảnh */
+        border-radius: 5px; /* Bo tròn viền */
+        max-width: 100%; /* Độ rộng tối đa */
+        width: 400px; /* Độ rộng */
+        margin-right: 30px; /* Khoảng cách phải */
+    }
+
+    /* Styles cho đoạn văn trong phần chi tiết */
+    .detail_sp p {
+        text-indent: 40px; /* Thụt vào đầu dòng */
+    }
+
+
+</style>
+<article>
+    <h1 class="heading" style="color: #000080">Chi Tiết <span>Bài Viết</span> </h1>
+<div class="custom">
+    <h3 style="color: #000080;font-size: 3rem; font-weight: bolder;"> @Model.Title</h3>
+    <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Bởi:</span> <span style="color: black; font-size: 1.7rem;">@Model.ByUser</span> </p>
+    <p> <span style="color: #000080; font-size: 1.7rem; font-weight: bolder;">Thời Gian:</span> <span style="color: black; font-size: 1.7rem;">@Model.Date</span> </p>
+</div>
+<br>
+<hr>
+
+<section class="detail_sp">
+    <div class="detail_img">
+        <img src="@Url.Content(Model.Picture)" alt="img" align="left">
+        Phong cách sống lành mạnh không chỉ là một xu hướng, mà còn là một lối sống tích cực và bền vững đang được nhiều người quan tâm và áp dụng trong cuộc sống hàng ngày. Điều này bắt nguồn từ nhận định rằng sức khỏe tinh thần và thể chất đều quan trọng, và chúng ta có thể cải thiện chất lượng cuộc sống thông qua việc áp dụng các thói quen và lựa chọn sống lành mạnh.
+
+        <p>
+            Một phong cách sống lành mạnh bao gồm việc chăm sóc sức khỏe bản thân thông qua việc ăn uống cân đối, tập luyện thể dục đều đặn, và giữ gìn tinh thần lạc quan. Việc ăn một chế độ ăn giàu rau củ, trái cây, hạt và thực phẩm tự nhiên không chỉ cung cấp năng lượng cho cơ thể mà còn giúp giảm nguy cơ mắc các bệnh lý nguy hiểm như bệnh tim, tiểu đường và béo phì.
+        </p>
+        <p>
+            Thể dục đều đặn không chỉ giúp cơ thể khỏe mạnh, mà còn tạo ra hứng thú và tinh thần thoải mái. Đi bộ, chạy bộ, yoga hay thậm chí là việc tham gia các môn thể thao đều là những hoạt động tốt cho sức khỏe và tinh thần.
+        </p>
+
+        <p>
+            Ngoài ra, việc duy trì tinh thần lạc quan, học cách quản lý stress và giữ gìn tình cảm với người xung quanh cũng rất quan trọng. Tinh thần lạc quan giúp chúng ta nhìn nhận cuộc sống từ góc độ tích cực, giảm stress và nâng cao chất lượng cuộc sống.
+        </p>
+
+        <p>
+            Cuối cùng, phong cách sống lành mạnh cũng đòi hỏi chúng ta phải tôn trọng môi trường và thế giới xung quanh. Bằng cách sử dụng các sản phẩm tái chế, giảm lượng rác thải và tiết kiệm năng lượng, chúng ta đang đóng góp vào việc bảo vệ môi trường và xây dựng một tương lai bền vững cho thế hệ sau.
+        </p>
+
+    </div>
+
+
+</section>
+
+<section class="">
+        <a class="btn btn-default" href="@Url.Action("Blogs","Blogs")">Quay Lại</a>
+    </section>
+
+</article>

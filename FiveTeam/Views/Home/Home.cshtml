@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+
+<!-- phần features-->
+<section class="features" id="features">
+    <h1 class="heading" style="color: #000080">Các <span>Tính Năng</span> Của Chúng Tôi</h1>
+    <div class="box-container">
+        <div class="box">
+            <img src="~/img/Features/fresh.jpg" alt="Fresh produce image">
+            <h3>Khám Phá Sự Tươi Ngon</h3>
+            <p>Khám phá các sản phẩm theo mùa mới nhất của chúng tôi được giao trực tiếp đến nhà bạn.</p>
+            <a href="~/Products/Products" class="btn">Mua Ngay</a>
+        </div>
+
+        <div class="box">
+            <img src="~/img/Features/giaohang.png" alt="Delivery truck image">
+            <h3>Tận Hưởng Giao Hàng Miễn Phí</h3>
+            <p>Nhận hàng tạp hóa yêu thích của bạn được giao miễn phí cho các đơn hàng trên 200.000 VNĐ.</p>
+            <a href="#" class="btn">Tìm Hiểu Thêm</a>
+        </div>
+
+        <div class="box">
+            <img src="~/img/Features/thanhtoan.jpg" alt="Payment methods image">
+            <h3>Thanh Toán Đơn Giản</h3>
+            <p>Chọn từ các tùy chọn thanh toán tiện lợi và an toàn như thẻ tín dụng, thẻ ghi nợ hoặc ví điện tử.</p>
+            <a href="#" class="btn"> Tùy Chọn Thanh Toán</a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- phần products -->
+<section class="products" id="products">
+    <h1 class="heading" style="color: #000080"> Tất Cả <span>Sản Phẩm</span> </h1>
+    <div class="swiper product-slide">
+        <div class="swiper-wrapper">
+
+            @foreach (var product in Model.Products)
+            {
+                <div class="swiper-slide box ">
+                    <a href="@Url.Action("DetailProduct", "Product", new { id = product.ID })"> 
+                    <img src="@Url.Content(product.Picture)" alt="@product.ProductName">
+                    <h3>@product.ProductName</h3>
+                    <div class="prince">@product.Price VNĐ</div>
+                    <a href="#" class="btn">Thêm Vào Giỏ Hàng</a>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</section>
+
+<!-- phần categories    -->
+<section class="categories" id="categories">
+    <h1 class="heading" style="color: #000080"> Sản Phẩm <span>giảm giá</span></h1>
+    <div class="box-container">
+
+
+        @foreach (var category in Model.Categories)
+        {
+            <div class="box">
+                <a href="@Url.Action("DetailCategories", "Categories", new { id = category.ID })">
+                    <img src="@Url.Content(category.Picture)" alt="@category.CategoriesName">
+                    <h3>@category.CategoriesName</h3>
+                    <p>Giảm @category.SellOff% </p>
+                    <a href="#" class="btn">Mua Ngay</a>
+            </div>
+        }
+
+
+    </div>
+</section>
+
+<!-- phần review  -->
+<section class="review" id="review">
+    <h1 class="heading" style="color: #000080">Khách Hàng <span>Đánh Giá</span></h1>
+
+    <div class="swiper review-slider">
+        <div class="swiper-wrapper">
+
+
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="swiper-slide box">
+                    <img src="@Url.Content(review.Picture)" alt="@review.NameReview">
+                    <p>@review.ContentReview</p>
+                    <h3>@review.NameReview</h3>
+                    <!-- Corrected star class -->
+                    <div class="stars">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+</section>
+
+<!-- Phần  Blogs  -->
+<section class="blogs" id="blogs">
+    <h1 class="heading" style="color: #000080">Bài Viết <span>Của Chúng Tôi</span></h1>
+    <div class="box-container">
+
+        @foreach (var blog in Model.Blogs)
+        {
+            <div class="box">
+                
+                    <img src="@Url.Content(blog.Picture)" alt="@blog.Title">
+                    <div class="content">
+                        <div class="icons">
+                            <a href="#"><i class="fas fa-user"></i>@blog.ByUser</a>
+                            <a href="#"><i class="fas fa-calendar"></i>@blog.Date</a>
+                        </div>
+                        <h3>@blog.Title</h3>
+                        <p>...(được tóm tắt nội dung bài viết, giới hạn số ký tự hoặc từ).</p>
+                        <a href="@Url.Action("DetailBlogs","Blogs", new { id = blog.ID })" class="btn">Xem Bài</a>
+                    </div>
+            </div>
+        }
+
+    </div>
+</section>
+
+
+
+
+

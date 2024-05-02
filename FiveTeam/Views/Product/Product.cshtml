@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+    <section class="categories" id="categories">
+        <h1 class="heading" style="color: #000080"> Tất Cả <span>Sản Phẩm</span> </h1>
+        <div class="box-container">
+
+            @foreach (var product in Model)
+            {
+                <div class=" box">
+                    <a href="@Url.Action("DetailProduct", "Product", new { id = product.ID })"> 
+                        <img src="@Url.Content(product.Picture)" alt="@product.ProductName">
+                        <h3>@product.ProductName</h3>
+                        <p class="prince">@product.Price VNĐ</p>
+                        <a href="#" class="btn">Thêm Vào Giỏ Hàng</a>
+                </div>
+            }
+        </div>
+    </section>
+
+
+

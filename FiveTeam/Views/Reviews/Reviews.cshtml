@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Reviews";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<!-- phần review  -->
+<section class="categories" id="categories">
+    <h1 class="heading" style="color: #000080">Khách Hàng <span>Đánh Giá</span></h1>
+    <div class="box-container">
+
+        @foreach (var review in Model)
+        {
+            <div class="swiper-slide box">
+                <img src="@Url.Content(review.Picture)" alt="@review.NameReview">
+                <p>@review.ContentReview</p>
+                <h3>@review.NameReview</h3>
+                <!-- Corrected star class -->
+                <div class="stars" style="color: #FF8C00 ">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-alt"></i>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</section>
+
+
+
+
+
+
